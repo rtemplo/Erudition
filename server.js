@@ -43,7 +43,10 @@ const config = {
         //var result = orm.exec("Exec dbo.UE_CreateUser 1, 'ray.ds', 'password', 'Ray', 'Templo', 'rtemplo@gmail.com', '''Trilogy Ed Svcs'', ''Software Development'', ''Senior Developer'', ''10/21/2000'''"); //recordset[] if you have a select statement
         //var result = orm.exec("Delete from UE_Accounts;DBCC CHECKIDENT ('UE_Accounts', RESEED, 999); "); //rowsAffected
         //var result = orm.exec("ALTER TABLE UE_AccountsExt ADD testCol varchar(50)");// returns an empty response object "res" in this case
-        var result = orm.exec("ALTER TABLE UE_AccountsExt DROP COLUMN testCol");
+        //var result = orm.exec("ALTER TABLE UE_AccountsExt DROP COLUMN testCol");
+        //var result = orm.exec("Select * from UE_Entities; Select * from UE_Accounts");
+        var result = orm.exec("EXEC GetAccountData 1, 3");
+
         result.then((res) => {
             console.log(res)
         });
