@@ -41,12 +41,17 @@ const Account = {
         }
     },
 
-    getdashdata: function (req, res) {
-        const sortcol = req.params.sortcol
-        sortcol = (sortcol === '' || sortcol === undefined || sortcol === null) ? 'NULL': "'"+sortcol+"'";
-        orm.exec(`EXEC GetAccountData 1, 1, 0, ${sortcol}`, function (result) {
-            res.json(result);
-        });
+    logout: (req, res) => {
+        req.session.destroy();
+        res.json({msg:"You have been logged out."});
+    },
+
+    getaccounts: async (req, res) => {
+        let sortcol = req.params.sortcol
+        sortcol = (sortcol === '' || sortcol === undefined || sortcol === null || sortcol === 'undefined') ? 'NULL': "'"+sortcol+"'";
+
+        let result = await orm.exec(`EXEC GetAccountData 1, 1, 0, ${sortcol}`);
+        res.json(result);
     },
 
     getprofileU: function (req, res) {

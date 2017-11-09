@@ -6,8 +6,8 @@ router.route("/auth")
   .get(Account.isAuthenticated);
 
 // Matches with "/api/account/getdashdata/:sortingcolumn"
-router.route("/getdashdata/:sortcol")
-  .get(Account.getdashdata);
+router.route("/getaccounts/:sortcol")
+  .get(Account.getaccounts);
 
 // Matches with "/api/account/getprofileU/:id"
 router.route("/getprofileU/:id")

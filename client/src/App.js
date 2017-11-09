@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import API from './utils/API.js'
+import Login from './pages/login'
+import Main from './pages/main'
 //import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
@@ -26,7 +28,7 @@ class App extends Component {
   render() {
     return (
       <div className="container-fluid" id="wrapper">
-        {this.state.authenticated} asdadas
+        <div>{(this.state.authenticated)?<Main />:<Login />}</div>
       </div>
     );
   }
