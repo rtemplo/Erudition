@@ -1,17 +1,25 @@
 const router = require("express").Router();
 const Account = require("../../models/accountData.js");
 
-// Matches with "/api/account"
-router.route("/")
-  .get(Account.findAll)
-  .post(Account.create);
+// /api/account/auth
+router.route("/auth")
+  .get(Account.isAuthenticated);
+
+// Matches with "/api/account/getdashdata/:sortingcolumn"
+router.route("/getdashdata/:sortcol")
+  .get(Account.getdashdata);
+
+// Matches with "/api/account/getprofileU/:id"
+router.route("/getprofileU/:id")
+  .get(Account.getprofileU);
+
+router.route("/getprofileM/:id")
+  .get(Account.getprofileM);
 
 // Matches with "/api/account/:id"
-router
-  .route("/:id")
-  .get(Account.findById)
+router.route("/:id")
+  .post(Account.create)
   .put(Account.update)
-  .delete(Account.remove);
+  .delete(Account.delete);
 
 module.exports = router;
-55

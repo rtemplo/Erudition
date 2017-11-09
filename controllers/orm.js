@@ -1,8 +1,9 @@
-const connection = require("./connection.js");
+const sql = require("mssql");
 
 orm = {
     exec: async (strSQL) => {
-        return await connection.request().query(strSQL);
+        const request = new sql.Request();
+        return await request.query(strSQL);
     }   
 };
 
