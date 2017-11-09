@@ -3,19 +3,27 @@ import API from '../../utils/API.js'
 
 class UserManager extends Component {
     state = {
+        tablecols:[],
         accountdata: []
     }
 
-    componentDidMount () {
+    componentWillMount () {
         this.getAccounts();
     }
 
     getAccounts = () => {
         API.getaccounts()
         .then(res => {
-            console.log(res.data.recordsets[0]);
-            this.setState({accountdata:res.data});
-            //console.log(this.state.authenticated);
+            this.setState({tablecols: res.data.recordsets[0], accountdata:res.data.recordsets[1]});
+            //console.log(this.state.tablecols);
+            //console.log(this.state.accountdata);
+
+            // this.state.accountdata.map((coldata, idx) => {
+            //     this.state.tablecols.map((col, idx2) => {
+            //         //console.log(col);
+            //         console.log(coldata[col.selectionCol]);
+            //     });
+            // });            
         })
         .catch(err => console.log(err));
     }
@@ -32,59 +40,31 @@ class UserManager extends Component {
                                     <div className="card-block">
                                         <h3 className="card-title">User Records</h3>
                                         
-                                        <table id="example" className="table table-striped table-bordered" cellSpacing="0" width="100%">
+                                        <table id="userrecords" className="table table-striped table-bordered" cellSpacing="0" width="100%">
                                             <thead>
                                                 <tr>
-                                                    <th>Username</th>
-                                                    <th>First Name</th>
-                                                    <th>Last Name</th>
-                                                    <th>Email</th>
-                                                    <th>Company</th>
-                                                    <th>Department</th>
-                                                    <th>Status</th>
+                                                {this.state.tablecols.map((col, idx) => (
+                                                    <th key={idx}>{col.selectionCol}</th>
+                                                ))}
                                                 </tr>
                                             </thead>
                                             
                                             <tfoot>
                                                 <tr>
-                                                    <th>Username</th>
-                                                    <th>First Name</th>
-                                                    <th>Last Name</th>
-                                                    <th>Email</th>
-                                                    <th>Company</th>
-                                                    <th>Department</th>
-                                                    <th>Status</th>
+                                                {this.state.tablecols.map((col, idx) => (
+                                                    <th key={idx}>{col.selectionCol}</th>
+                                                ))}
                                                 </tr>
                                             </tfoot>
 
                                             <tbody>
-                                                <tr>
-                                                    <td>TNixon</td>
-                                                    <td>Tiger</td>
-                                                    <td>Nixon</td>
-                                                    <td>tnixon@email.com</td>
-                                                    <td>Premier Farnell</td>
-                                                    <td>Product Development</td>
-                                                    <td>Active</td>
+                                                {this.state.accountdata.map((coldata, idx) => (
+                                                <tr key={idx}>
+                                                    {this.state.tablecols.map((col, idx2) => (
+                                                        <td key={idx2}>{coldata[col.selectionCol]}</td>
+                                                    ))}
                                                 </tr>
-                                                <tr>
-                                                    <td>GWinters</td>
-                                                    <td>Garrett</td>
-                                                    <td>Winters</td>
-                                                    <td>gwinters@email.com</td>
-                                                    <td>Premier Farnell</td>
-                                                    <td>BI Integration</td>
-                                                    <td>Active</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>ACox</td>
-                                                    <td>Ashton</td>
-                                                    <td>Cox</td>
-                                                    <td>acox@email.com</td>
-                                                    <td>Avnet</td>
-                                                    <td>Marketing & Web Presence</td>
-                                                    <td>Inactive</td>
-                                                </tr>
+                                                ))}
                                             </tbody>                                            
                                         
                                         </table>
