@@ -15,11 +15,12 @@ class SideMenu extends Component {
                 <a href="#menu-toggle" className="btn btn-default" id="menu-toggle"><em className="fa fa-bars"></em></a>
 
                 <ul className="nav nav-pills flex-column sidebar-nav">
-                    <li className="nav-item"><a className="nav-link" href="manager.html"><em className="fa fa-dashboard"></em> Dashboard</a></li>
+                    {/* <li className="nav-item"><a className="nav-link" href="manager.html"><em className="fa fa-dashboard"></em> Dashboard</a></li> */}
                     <li className="nav-item"><a className="nav-link" href="/usermanager"><em className="fa fa-user"></em> User Management</a></li>
-                    <li className="nav-item"><a className="nav-link" href="#"><em className="fa fa-user"></em> Surveys</a></li>
-                    <li className="nav-item"><a className="nav-link" href="#"><em className="fa fa-user"></em> Content Distribution</a></li>
-                    <li className="parent nav-item">
+                    <li className="nav-item"><a className="nav-link" href="/accountsconfig"><em className="fa fa-user"></em> Account Configuration</a></li>
+                    {/* <li className="nav-item"><a className="nav-link" href="#"><em className="fa fa-user"></em> Surveys</a></li>
+                    <li className="nav-item"><a className="nav-link" href="#"><em className="fa fa-user"></em> Content Distribution</a></li> */}
+                    {/* <li className="parent nav-item">
                         <a className="nav-link" data-toggle="collapse" href="#sub-item-1">
                             <em className="fa fa-file-o">&nbsp;</em> Pages <span data-toggle="collapse" href="#sub-item-1" className="icon pull-right"><i className="fa fa-plus"></i></span>
                         </a>
@@ -31,7 +32,7 @@ class SideMenu extends Component {
                                 Error 404
                             </a></li>
                         </ul>
-                    </li>
+                    </li> */}
                 </ul>
 
                 <a className="logout-button"onClick={() => this.logout()}><em className="fa fa-power-off"></em> Signout</a>

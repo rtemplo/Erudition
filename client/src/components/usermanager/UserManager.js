@@ -11,6 +11,10 @@ class UserManager extends Component {
         this.getAccounts();
     }
 
+    componentDidMount () {
+        //window.jQuery('#userrecords').DataTable();
+    }
+
     getAccounts = () => {
         API.getaccounts()
         .then(res => {
@@ -58,13 +62,13 @@ class UserManager extends Component {
                                             </tfoot>
 
                                             <tbody>
-                                                {this.state.accountdata.map((coldata, idx) => (
+                                            {this.state.accountdata.map((coldata, idx) => (
                                                 <tr key={idx}>
-                                                    {this.state.tablecols.map((col, idx2) => (
-                                                        <td key={idx2}>{coldata[col.selectionCol]}</td>
-                                                    ))}
-                                                </tr>
+                                                {this.state.tablecols.map((col, idx2) => (
+                                                    <td key={idx2}>{coldata[col.selectionCol]}</td>
                                                 ))}
+                                                </tr>
+                                            ))}
                                             </tbody>                                            
                                         
                                         </table>

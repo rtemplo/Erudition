@@ -45,13 +45,13 @@ class Login extends Component {
 								<div className="form-group">
 									<input className="form-control" placeholder="Password" name="Password" type="password" value={this.state.Password} onChange={this.handleInputChange} />
 								</div>
-								<div className="checkbox mt-1 mb-2">
+								{/* <div className="checkbox mt-1 mb-2">
 									<label className="custom-control custom-checkbox">
 										<input type="checkbox" className="custom-control-input" name="Remember" />
                                         <span className="custom-control-indicator"></span>
                                         <span className="custom-control-description">Remember me</span>
                                     </label>
-								</div>
+								</div> */}
 								<div className="text-center">
                                     <button type="button" className="btn btn-lg btn-primary" disabled={!(this.state.Username && this.state.Password)} onClick={this.handleFormSubmit}>Login</button>
 								</div>

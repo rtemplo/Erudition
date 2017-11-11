@@ -10,16 +10,20 @@ export default {
   authenticate: function() {
     return axios.get("/api/account/auth");
   },
-  // Gets the book with the given id
   getaccounts: function(sortcol) {
     return axios.get("/api/account/getaccounts/" + sortcol);
   },
-  // Deletes the book with the given id
+  getconfig: function() {
+    return axios.get("/api/account/getconfig");
+  },  
   getprofileU: function(id) {
     return axios.get("/api/account/getprofileU" + id);
   },
   // Saves a book to the database
   getprofileM: function(id) {
     return axios.get("/api/account/getprofileM", id);
+  },
+  getuserinfo: function() {
+    return axios.get("/api/account/getuserinfo");
   }
 };

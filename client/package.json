@@ -5,8 +5,12 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "react": "^16.0.0",
+    "react-autosuggest": "^9.3.2",
+    "react-datagrid": "^2.1.2",
+    "react-datepicker": "^0.60.2",
     "react-dom": "^16.0.0",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "react-sortable-hoc": "^0.6.8"
   },
   "scripts": {
     "start": "react-scripts start",

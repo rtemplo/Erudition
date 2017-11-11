@@ -16,6 +16,13 @@ router.route("/getprofileU/:id")
 router.route("/getprofileM/:id")
   .get(Account.getprofileM);
 
+router.route("/getuserinfo")
+  .get(Account.getuserinfo);
+
+// get the data structure for user account fields
+router.route("/getconfig")
+  .get(Account.getconfig);
+
 // Matches with "/api/account/:id"
 router.route("/:id")
   .post(Account.create)

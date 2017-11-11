@@ -17,12 +17,15 @@ const Account = {
         const username = req.body.Username;
         const password = req.body.Password;
 
-        var result = await orm.exec(`Select Username, [Password], Email, userID from UE_Accounts where [Username] = '${username}' and [Password] = '${password}'`);
+        var result = await orm.exec(`Select Username, FirstName, LastName, [Password], Email, userID from UE_Accounts where [Username] = '${username}' and [Password] = '${password}'`);
 
         if (result.recordset.length >= 1) {
             const userRec = result.recordset[0];
             ssn = req.session;
             ssn.userID = userRec.userID;
+            ssn.username = userRec.Username;
+            ssn.firstname = userRec.FirstName;
+            ssn.lastname = userRec.LastName;
             res.json({usrObj:ssn.userID});
         } else {
             req.session.destroy();
@@ -68,8 +71,18 @@ const Account = {
         });
     },
 
+    getuserinfo: function (req, res) {
+        //console.log(req.session);
+        res.json({Username: req.session.firstname + ' ' + req.session.lastname});
+    },
+
+    getconfig: async (req, res) => {
+        let result = await orm.exec('EXEC GetAccountData 1, 0')
+        res.json(result);
+    }, 
+
     create: function (req, res) {
-        const strSQL = formAddSQLCommand(req.body)
+        const strSQL = formAddSQLCommand(req.body);
         orm.exec(strSQL, function (result) {
             res.json(result);
         });

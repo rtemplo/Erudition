@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from '../../components/header';
 import SideMenu from '../../components/sidemenu';
 import UserManager from '../../components/usermanager';
+import AccountsConfig from '../../components/accountsconfig';
 import API from '../../utils/API.js';
 
 const Main = () =>
@@ -12,8 +13,9 @@ const Main = () =>
             <div className="row">
                 <SideMenu />
                 <Switch>
-                    <Route component={UserManager} />   
                     <Route exact path="/usermanager" component={UserManager} />
+                    <Route exact path="/accountsconfig" component={AccountsConfig} />
+                    <Route component={UserManager} />                       
                 </Switch>
             </div>
         </Router>
